@@ -1,27 +1,43 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/Header/Header";
+import Card from "./components/Card/Card";
+import reviewsData from "./reviews.json";
+import Overlay from "./components/Overlay/Overlay";
+
+// create an interface for the Reviewer object
+interface Reviewer {
+    name: string;
+    review: string;
+    grade: number;
+    reviewer_level: string;
+}
 
 function App() {
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>SFU Surge frontend technical :)</h1>
-      <div className="card">
-        <p>
-          Implement the provided design on this page, using the data found in
-          "reviews.json"
-        </p>
-      </div>
-    </>
-  );
+    const [reviews, setReviews] = useState<Reviewer[]>([]); // initialize reviews state
+    const [overlayStatus, setOverlayStatus] = useState(true); // initialize overlay state
+
+    // function to toggle isActive state
+    const toggleOverlay = () => {
+        setOverlayStatus(!overlayStatus);
+    };
+
+    // set reviews state to reviews
+    useEffect(() => {
+        setReviews(reviewsData);
+    }, []);
+
+    return (
+        <div className="container">
+            <Header/>
+            <div className="reviews-container">
+                {reviews.map((review, index) => (
+                    <Card key={index} review={review}/>
+                ))}
+            </div>
+            <Overlay isActive={overlayStatus} onToggle={toggleOverlay} />
+        </div>
+    );
 }
 
 export default App;

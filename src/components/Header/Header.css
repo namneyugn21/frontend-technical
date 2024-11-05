@@ -1,0 +1,60 @@
+header {
+    width: 327px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.sub-header {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+.header-reviews {
+    color: #EC4899;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+}
+.header-title {
+    display: inline-block;
+    line-height: 32.63px;
+    font-weight: 600;
+    font-size: 29px;
+    margin: 0;
+    letter-spacing: -0.435px;
+}
+.description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.12px;
+    margin: 0;
+    text-align: left;
+}
+
+@media screen and (min-width: 788px) {
+    header {
+        width: 100%;
+        gap: 16px;
+    }
+    .sub-header {
+        text-align: center;
+    }
+    .description {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    header {
+        width: 800px;
+        gap: 16px;
+    }
+    .sub-header {
+        text-align: center;
+    }
+    .description {
+        text-align: center;
+    }
+}
